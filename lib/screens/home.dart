@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 newpost(context) async {
   var _picker = ImagePicker();
-  var pickedFile = await _picker.getImage(source: ImageSource.gallery);
+  var pickedFile = await _picker.getImage(source: ImageSource.gallery); //get image from phone gallery
   var finalimage = File(pickedFile.path);
   if (pickedFile == null) {
     return;

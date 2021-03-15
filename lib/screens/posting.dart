@@ -129,24 +129,24 @@ class _PostingState extends State<Posting> {
 
   Future<String> uploadImage() async {
     Reference storageReference =
-        FirebaseStorage.instance.ref().child(widget.image.path);
+        FirebaseStorage.instance.ref().child(widget.image.path); //upload image
     UploadTask uploadImage = storageReference.putFile(widget.image);
     await uploadImage;
-    final url = await storageReference.getDownloadURL();
+    final url = await storageReference.getDownloadURL(); //get image url
     print(url);
     return url;
   }
 
   processData(url) async {
-    var newpost = NewPost(list[0]);
+    var newpost = NewPost(list[0]); //make post object
     newpost.setURL(url);
-    await newpost.generateLocation();
+    await newpost.generateLocation(); //generate location
     var lat = newpost.getlat();
     var long = newpost.getlong();
     if (lat == null || long == null) {
       return false;
     } else {
-      await FirebaseFirestore.instance.collection('posts').add({
+      await FirebaseFirestore.instance.collection('posts').add({ //add firebase store post to collection
         'date': DateTime.now(),
         'imageURL': newpost.getURL(),
         'quantity': newpost.getquantity(),

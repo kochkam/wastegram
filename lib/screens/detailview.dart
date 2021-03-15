@@ -24,7 +24,7 @@ class View extends State<NewDetails> {
     var datestring = widget.post['date'].toDate().toString();
     DateFormat dateFormat = DateFormat("yyyy-MM-dd");
     DateTime datetime = dateFormat.parse(datestring);
-    var formatter = new DateFormat('E, MMMM d, y').format(datetime);
+    var formatter = new DateFormat('E, MMMM d, y').format(datetime);  //format date
 
     return Container(
         child: Column(children: [
@@ -32,7 +32,7 @@ class View extends State<NewDetails> {
       Text(formatter, style: TextStyle(fontSize: 30.00, color: Colors.white)),
       SizedBox(height: 60.00),
       Container(
-          height: 350,
+          height: 350, //display image
           width: 400,
           child: Image.network(widget.post['imageURL'], fit: BoxFit.fill)),
       Details(widget.post),

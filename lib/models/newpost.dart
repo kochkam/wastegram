@@ -1,6 +1,6 @@
 import './locationservices.dart';
 
-class NewPost {
+class NewPost {  //contains post info mostly setters and getters but also get zip form locationservies model.
   var date;
   var imageURL;
   var latitude;

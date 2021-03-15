@@ -6,7 +6,7 @@ class Details extends StatelessWidget {
   @override
   build(BuildContext context) {
     return Expanded(
-      child: SingleChildScrollView(
+      child: SingleChildScrollView(  //display detail screen
         child: Container(
           width: 300.00,
           height: 300.00,

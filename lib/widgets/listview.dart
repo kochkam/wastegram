@@ -7,7 +7,7 @@ class List extends StatelessWidget {
   @override
   build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance
+      stream: FirebaseFirestore.instance //get firebase store data from posts collection build if data otherwise display indicator
           .collection('posts')
           .orderBy('date', descending: true)
           .snapshots(),
@@ -28,7 +28,7 @@ class List extends StatelessWidget {
       itemCount: snapshot.data.docs.length,
       itemBuilder: (context, index) {
         var post = snapshot.data.docs[index];
-        var datestring = post['date'].toDate().toString();
+        var datestring = post['date'].toDate().toString();  //format date info
         DateFormat dateFormat = DateFormat("yyyy-MM-dd");
         DateTime datetime = dateFormat.parse(datestring);
         var formatter = new DateFormat('EEEE, MMMM d, y').format(datetime);
@@ -39,7 +39,7 @@ class List extends StatelessWidget {
             color: Colors.teal[300],
             child: ListTile(
               title: Text(formatter),
-              trailing: Text(post['quantity'].toString()),
+              trailing: Text(post['quantity'].toString()), //display tile info
               onTap: () => {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => NewDetails(post)))
