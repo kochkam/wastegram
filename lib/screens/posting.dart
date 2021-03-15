@@ -39,8 +39,8 @@ class _PostingState extends State<Posting> {
 
   Widget buildField(_formKey, ctx) {
     return Semantics(
-        label: "Please enter number of items wasted",
-          child: SizedBox(
+      label: "Please enter number of items wasted",
+      child: SizedBox(
         height: 200,
         width: 400,
         child: Padding(
@@ -75,7 +75,9 @@ class _PostingState extends State<Posting> {
             height: 10,
           ),
           buildField(_formKey, ctx),
-          Semantics(label:"Tap bottom button to submit post",child:submitButton(ctx)),
+          Semantics(
+              label: "Tap bottom button to submit post",
+              child: submitButton(ctx)),
         ],
       ),
     );

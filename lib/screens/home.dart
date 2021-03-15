@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../widgets/listview.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,34 +16,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: List(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Semantics(label:"Tap bottom button to Add entry", button: true, child:FloatingActionButton(
-      child: Icon(Icons.camera),
-      onPressed: () async { newpost(context);})),
-     );
+      floatingActionButton: Semantics(
+          label: "Tap bottom button to Add entry",
+          button: true,
+          child: FloatingActionButton(
+              child: Icon(Icons.camera),
+              onPressed: () async {
+                newpost(context);
+              })),
+    );
   }
+}
+
+newpost(context) async {
+  var _picker = ImagePicker();
+  var pickedFile = await _picker.getImage(source: ImageSource.gallery);
+  var finalimage = File(pickedFile.path);
+  if (pickedFile == null) {
+    return;
+  } else {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => Posting(finalimage)));
   }
-
-  newpost(context) async {
-    var _picker = ImagePicker();
-    var pickedFile = await _picker.getImage(source: ImageSource.gallery);
-    var finalimage = File(pickedFile.path);
-    if(pickedFile == null){
-      return; 
-    }
-    else{
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Posting(finalimage)));
-    }
-
-
 }
