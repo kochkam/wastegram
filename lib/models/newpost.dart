@@ -1,55 +1,53 @@
 import './locationservices.dart';
 
-
-
 class NewPost {
-  var date; 
+  var date;
   var imageURL;
-  var latitude; 
-  var longitude; 
+  var latitude;
+  var longitude;
   final quantity;
-  NewPost(this.quantity,[this.imageURL,this.latitude,this.longitude,this.date]);
+  NewPost(this.quantity,
+      [this.imageURL, this.latitude, this.longitude, this.date]);
 
-  setLat(double lat){
-    latitude = lat; 
+  setLat(double lat) {
+    latitude = lat;
   }
 
-  setLong(double long){
-    longitude = long; 
+  setLong(double long) {
+    longitude = long;
   }
 
-  setURL(String url){
-    imageURL = url; 
-  }
-  setDate(DateTime dateset){
-    date = dateset; 
+  setURL(String url) {
+    imageURL = url;
   }
 
-  double getlat(){
-    return latitude; 
+  setDate(DateTime dateset) {
+    date = dateset;
   }
 
-  double getlong(){
-    return longitude; 
+  double getlat() {
+    return latitude;
   }
 
-  String getquantity(){
-    return quantity; 
+  double getlong() {
+    return longitude;
   }
 
-  DateTime getdate(){
-    return date; 
+  String getquantity() {
+    return quantity;
   }
 
-  String getURL(){
-    return imageURL; 
+  DateTime getdate() {
+    return date;
   }
 
-   generateLocation()async {
-    final location = await WasteLocation().getlocation(); 
+  String getURL() {
+    return imageURL;
+  }
+
+  generateLocation() async {
+    final location = await WasteLocation().getlocation();
     setLat(location.latitude);
     setLong(location.longitude);
   }
-
-
 }

@@ -10,25 +10,23 @@ class WasteLocation {
   LocationData _locationData;
 
   Future<LocationData> getlocation() async {
-
-  _serviceEnabled = await location.serviceEnabled();
-  if (!_serviceEnabled) {
-    _serviceEnabled = await location.requestService();
+    _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
-      return Future.error("Location services are disabled");
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return Future.error("Location services are disabled");
+      }
     }
-  }
 
-  _permissionGranted = await location.hasPermission();
-  if (_permissionGranted == PermissionStatus.denied) {
-    _permissionGranted = await location.requestPermission();
-    if (_permissionGranted != PermissionStatus.granted) {
-      return Future.error("Location permissions are denied");
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return Future.error("Location permissions are denied");
+      }
     }
-  }
 
-  _locationData = await location.getLocation();
-  return _locationData; 
+    _locationData = await location.getLocation();
+    return _locationData;
   }
 }
-
