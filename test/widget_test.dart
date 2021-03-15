@@ -1,3 +1,5 @@
+import 'package:location/location.dart';
+
 // This is a basic Flutter widget test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
@@ -7,24 +9,38 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import '../lib/models/newpost.dart';
 import 'package:wastegram/main.dart';
+import 'package:wastegram/models/locationservices.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  test('Post created from constructor should work',() async{
+    TestWidgetsFlutterBinding.ensureInitialized();
+    var now = DateTime.now();
+    var post = NewPost("12",'imageURL',23.00,11.00,now);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(post.getlat(), 23.00);
+    expect(post.getlong(), 11.00);
+    expect(post.getURL(), 'imageURL');
+    expect(post.getdate(), now );
+    expect(post.getquantity(), "12");
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('Post created from constructor should work and editing it using setters',() async{
+    TestWidgetsFlutterBinding.ensureInitialized();
+    var now = DateTime.now();
+    var post = NewPost("12",'imageURL',23.00,11.00,now);
+    var newdate = DateTime.now();
+    post.setDate(newdate);
+    post.setLat(44.00);
+    post.setLong(22.00);
+    post.setURL("url");
+    
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(post.getlat(), 44.00);
+    expect(post.getlong(), 22.00);
+    expect(post.getURL(), 'url');
+    expect(post.getdate(), newdate );
+    expect(post.getquantity(), "12");
   });
 }

@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: List(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Semantics(hint: "Tap to add Entry",child:FloatingActionButton(
+      floatingActionButton: Semantics(label:"Tap to Add entry", button: true, child:FloatingActionButton(
       child: Icon(Icons.camera),
       onPressed: () async { newpost(context);})),
      );
