@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../widgets/scrollabledetails.dart';
 
 
 class NewDetails extends StatefulWidget {
@@ -35,31 +36,12 @@ class View extends State<NewDetails> {
             Text(formatter, style: TextStyle(fontSize: 30.00,color: Colors.white)),
             SizedBox(height:60.00),
             Container(height: 350, width: 400,child:Image.network(widget.post['imageURL'],fit: BoxFit.fill)),
-            alternateBody(),
+            Details(widget.post),
           ]
         ));
 
   }
 
 
-Widget alternateBody(){
-  return Expanded(
-      child: SingleChildScrollView(
-        child: Container(
-          width: 300.00,
-          height: 300.00,
-        //color: Colors.lightBlue,
-          child: Column(children:[
-                  SizedBox(height:50.00),
-                  Text(widget.post['quantity'].toString() + " items", style: TextStyle(fontSize: 40.00,color: Colors.white)),
-                  SizedBox(height:75.00),
-                  Text("Location: (" + widget.post['latitude'].toString() + ", " + widget.post['longitude'].toString() + ")", style: TextStyle(fontSize: 15.00,color: Colors.white)),
-                  SizedBox(height:10.00),
-        ]),
-    ),
-      ),
-  );
 
-
-}
 }

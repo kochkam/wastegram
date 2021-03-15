@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import './widgets/listview.dart';
+import '../widgets/listview.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './screens/posting.dart';
+import 'posting.dart';
 import 'dart:io';
 
 class MyHomePage extends StatefulWidget {
@@ -28,13 +28,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: List(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Semantics(label:"Tap to Add entry", button: true, child:FloatingActionButton(
+      floatingActionButton: Semantics(label:"Tap bottom button to Add entry", button: true, child:FloatingActionButton(
       child: Icon(Icons.camera),
       onPressed: () async { newpost(context);})),
      );
-//.then(Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Posting())))},);
   }
-     // This trailing comma makes auto-formatting nicer for build methods.
   }
 
   newpost(context) async {
